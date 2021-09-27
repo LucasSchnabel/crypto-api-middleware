@@ -29,6 +29,7 @@ def printCoinsList():
 
 @app.route("/coins/list", methods=['POST'])
 def updateCoinsList():
+    coinListCollection.drop()
     for i in cg.get_coins_list():
         coinListCollection.insert_one(i)
     return redirect(url_for("/coins/list"))
